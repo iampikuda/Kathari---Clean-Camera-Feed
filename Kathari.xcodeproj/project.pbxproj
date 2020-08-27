@@ -1,0 +1,590 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1F7C249107C6E0DC1A68C44874669456 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B546688D28266C68BB3A8A8269EEA932 /* LaunchScreen.storyboard */; };
+		24A3216FD8FFDC72168A98CB98504579 /* KHViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9685CD1C529FC339E756967D50F23D /* KHViewController.swift */; };
+		2562C55CC603F402E4774B42222B4388 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EE93336E38F260D09B86C1051691CB /* CameraController.swift */; };
+		280537F79F6655AD2CD5975217947A5D /* NavigationBar+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C824AB38E7789A75E168597925DEC3 /* NavigationBar+Utils.swift */; };
+		36038D6924E7DCDC00822696 /* HomeViewController+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36038D6824E7DCDC00822696 /* HomeViewController+Settings.swift */; };
+		36038D6B24E7DCEB00822696 /* HomeViewController+Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36038D6A24E7DCEB00822696 /* HomeViewController+Camera.swift */; };
+		3661FB7424F2741B00F2B833 /* WindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3661FB7324F2741B00F2B833 /* WindowView.swift */; };
+		3661FB7624F2763500F2B833 /* TorchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3661FB7524F2763500F2B833 /* TorchView.swift */; };
+		3661FB7824F28DEE00F2B833 /* AVCapturePosition+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3661FB7724F28DEE00F2B833 /* AVCapturePosition+Utils.swift */; };
+		3694DE7824F7174D0007466F /* Float+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3694DE7724F7174D0007466F /* Float+Utils.swift */; };
+		39F4F3B4563569AAFAF000364EEAC79C /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5D27387F82563BEDAB708FB61F4A6B /* UIConstants.swift */; };
+		4191AC0A98EF414F51DFC4E98AB5D470 /* Dictionary+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D09F3B274A6193BDEBC39798A5960EF /* Dictionary+Utils.swift */; };
+		472911EDC090BAA17DEF6E8871535B18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87571BF2F8D904D301C0C52B5390F6C6 /* Assets.xcassets */; };
+		4BB76107DEE172A3203285BF7C86FBB3 /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321B8C2FC3FA5DB742330B3843DC9675 /* UIViewController+Utils.swift */; };
+		4D901313CE5B376C210F4CA75D25357D /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB63886ECBE8D725938D71943113232D /* Helper.swift */; };
+		50F39D6A8843F9E414A4C80F3AE7F1A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAE2622247CFD46451AEF9849A578DF /* AppDelegate.swift */; };
+		5E469B8000EC1B5141BBD252B9F1E594 /* libPods-Kathari.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D3A85D0A4F851F930A409C8C5A3B85 /* libPods-Kathari.a */; };
+		68C0A2BA353F8034B21FA08C5C921892 /* DateFormatter+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6995E5813887DBF24871851C41A19F52 /* DateFormatter+Utils.swift */; };
+		6C93A68CCB8ED7262147975EEE864837 /* Data+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7EC52470DF416AFC896EDB4EED7E1B /* Data+Utils.swift */; };
+		726A56CD4069E201608E8ED8FF76ADE6 /* CALayer+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BB548571CF80071145230BE31C2B35 /* CALayer+Utils.swift */; };
+		72AE97C6CCE3EA74924B1067F073C595 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4230F1BBE1A909A132A2BAE57F50FFFB /* SceneDelegate.swift */; };
+		7D7004A4DB127F9CD3D68F3C00F0B777 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 22CCF89D77B8DB72BB32055B5E7E0DEA /* .swiftlint.yml */; };
+		819E0B2DE8393E39CCE318C59DD0E8F3 /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3E7A6B12466125162E9A20574447C /* UIColor+Utils.swift */; };
+		839FB3CEB4CA25255EBB54EB22F52900 /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5527DA8CAE330690D9E044580693D1 /* UIImage+Utils.swift */; };
+		8B8CD83D26DD6D2535CD52FFC379F4D4 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C4E06083475528DF45E8F86DA9AA1C /* AppCoordinator.swift */; };
+		8FB247BE7C80342EE9631D1482830766 /* UIBarButtonItem+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42F2A9C3D1D894EE440A7EAA2E9F310 /* UIBarButtonItem+Utils.swift */; };
+		9070A6495ED9FCA48775832E8C7D0CEF /* UIStackView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0760553B9805A4A9644ECAA3E952927 /* UIStackView+Utils.swift */; };
+		93EE66A59083BB9801F28266AFE1E3EB /* ImageName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C913562CC6B011F161DA999F7EA2F834 /* ImageName.swift */; };
+		AE4A1EEDF9CD403AAA43675D404755DE /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F73E093DB8792CA8DED448D04A8F6A /* String+Utils.swift */; };
+		B4400F30C4369D76631CFD1194DBB7FA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8B2A683CC1CC93E8D9A2B09BE25F6C /* HomeViewController.swift */; };
+		B563BD92A1163EF49EEAEA31614FED00 /* NSMutableAttributedString+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75F870EB0E57BFE2A127C4A3F5E33E4 /* NSMutableAttributedString+Utils.swift */; };
+		C18B481B7D7AFDA27E09A1FC55167AE3 /* CGFloat+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8D4B13F74B8AC5BE045C595A965A65 /* CGFloat+Utils.swift */; };
+		C1E3148E5F8C4A0A0933DB0C054B38AB /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99C00E95514A012209A7A5AEB2AE5AB /* UIView+Utils.swift */; };
+		D5B3619E0CF2849777899B270C8274AC /* Request+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867B7361B18ADC0DB6C60B4BC6F1F8B3 /* Request+Utils.swift */; };
+		D89A1B2FDC05B5E5C76EB7646B8E0B39 /* Double+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD69B65BBB8991068C6E41EABC540A59 /* Double+Utils.swift */; };
+		E16E1FD3EF3B61474082ABFC862002E5 /* UIScrollView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7C39E7267C3C41F96A212EADEB9D93 /* UIScrollView+Utils.swift */; };
+		EE39EEA2F8C6D4865F01EC5DFE6FA7A7 /* UIApplication+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B6E1EB026FE0264998F5B667007A1E /* UIApplication+Utils.swift */; };
+		FDCF0D19C4978B36AD66A2EBFB82FE25 /* Realm+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A7208F93D67586E675A3C1C9865DF3 /* Realm+Utils.swift */; };
+		FE410AA6B17866A9DA3F7A76250863CD /* UIFont+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254F831F2110B2FB1C1FB44D75B48638 /* UIFont+Utils.swift */; };
+		FECDE841CEE5BF810A2CE1920ECBD29B /* ScreenSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0609C09A242E6EC9EACB45EB7146674 /* ScreenSizes.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		00F73E093DB8792CA8DED448D04A8F6A /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
+		18C4E06083475528DF45E8F86DA9AA1C /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		1D09F3B274A6193BDEBC39798A5960EF /* Dictionary+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Utils.swift"; sourceTree = "<group>"; };
+		1E7EC52470DF416AFC896EDB4EED7E1B /* Data+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Utils.swift"; sourceTree = "<group>"; };
+		21B6E1EB026FE0264998F5B667007A1E /* UIApplication+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+Utils.swift"; sourceTree = "<group>"; };
+		22CCF89D77B8DB72BB32055B5E7E0DEA /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		254F831F2110B2FB1C1FB44D75B48638 /* UIFont+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Utils.swift"; sourceTree = "<group>"; };
+		2C9685CD1C529FC339E756967D50F23D /* KHViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KHViewController.swift; sourceTree = "<group>"; };
+		321B8C2FC3FA5DB742330B3843DC9675 /* UIViewController+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
+		36038D6824E7DCDC00822696 /* HomeViewController+Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Settings.swift"; sourceTree = "<group>"; };
+		36038D6A24E7DCEB00822696 /* HomeViewController+Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Camera.swift"; sourceTree = "<group>"; };
+		3661FB7324F2741B00F2B833 /* WindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowView.swift; sourceTree = "<group>"; };
+		3661FB7524F2763500F2B833 /* TorchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorchView.swift; sourceTree = "<group>"; };
+		3661FB7724F28DEE00F2B833 /* AVCapturePosition+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCapturePosition+Utils.swift"; sourceTree = "<group>"; };
+		3694DE7724F7174D0007466F /* Float+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Utils.swift"; sourceTree = "<group>"; };
+		369E161C30EE9D7746817521E1493083 /* Pods-Kathari.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kathari.debug.xcconfig"; path = "Target Support Files/Pods-Kathari/Pods-Kathari.debug.xcconfig"; sourceTree = "<group>"; };
+		3BAE2622247CFD46451AEF9849A578DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4230F1BBE1A909A132A2BAE57F50FFFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		4E5527DA8CAE330690D9E044580693D1 /* UIImage+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
+		5C8B2A683CC1CC93E8D9A2B09BE25F6C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		61C88A94E2DD2B0D72B202A2D3867E3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6995E5813887DBF24871851C41A19F52 /* DateFormatter+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Utils.swift"; sourceTree = "<group>"; };
+		6F7C39E7267C3C41F96A212EADEB9D93 /* UIScrollView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Utils.swift"; sourceTree = "<group>"; };
+		7FF3E7A6B12466125162E9A20574447C /* UIColor+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Utils.swift"; sourceTree = "<group>"; };
+		867B7361B18ADC0DB6C60B4BC6F1F8B3 /* Request+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Request+Utils.swift"; sourceTree = "<group>"; };
+		87571BF2F8D904D301C0C52B5390F6C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8E1089BFBA09DD29BBDAD1FECCEF173D /* Pods-BoilerPlate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoilerPlate.debug.xcconfig"; path = "Target Support Files/Pods-BoilerPlate/Pods-BoilerPlate.debug.xcconfig"; sourceTree = "<group>"; };
+		99EE93336E38F260D09B86C1051691CB /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		A0C824AB38E7789A75E168597925DEC3 /* NavigationBar+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NavigationBar+Utils.swift"; sourceTree = "<group>"; };
+		B2BB548571CF80071145230BE31C2B35 /* CALayer+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Utils.swift"; sourceTree = "<group>"; };
+		C7A7208F93D67586E675A3C1C9865DF3 /* Realm+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Realm+Utils.swift"; sourceTree = "<group>"; };
+		C913562CC6B011F161DA999F7EA2F834 /* ImageName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageName.swift; sourceTree = "<group>"; };
+		CC46AC83FA6847A6067AF0441673A889 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD5D27387F82563BEDAB708FB61F4A6B /* UIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
+		D42F2A9C3D1D894EE440A7EAA2E9F310 /* UIBarButtonItem+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Utils.swift"; sourceTree = "<group>"; };
+		D99C00E95514A012209A7A5AEB2AE5AB /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
+		DAEF694B2C678A1BEED9D46514DFF24C /* Kathari - Clean Camera Feed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kathari - Clean Camera Feed.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB63886ECBE8D725938D71943113232D /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		EC833CE33E508AB864273453984A9BFB /* Pods-Kathari.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kathari.release.xcconfig"; path = "Target Support Files/Pods-Kathari/Pods-Kathari.release.xcconfig"; sourceTree = "<group>"; };
+		F0609C09A242E6EC9EACB45EB7146674 /* ScreenSizes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenSizes.swift; sourceTree = "<group>"; };
+		F0760553B9805A4A9644ECAA3E952927 /* UIStackView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+Utils.swift"; sourceTree = "<group>"; };
+		F1D3A85D0A4F851F930A409C8C5A3B85 /* libPods-Kathari.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kathari.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F65C27C071C553FFD51FAC96769FF64D /* Pods-BoilerPlate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoilerPlate.release.xcconfig"; path = "Target Support Files/Pods-BoilerPlate/Pods-BoilerPlate.release.xcconfig"; sourceTree = "<group>"; };
+		F75F870EB0E57BFE2A127C4A3F5E33E4 /* NSMutableAttributedString+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Utils.swift"; sourceTree = "<group>"; };
+		FD69B65BBB8991068C6E41EABC540A59 /* Double+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Utils.swift"; sourceTree = "<group>"; };
+		FF8D4B13F74B8AC5BE045C595A965A65 /* CGFloat+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Utils.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C7F3911D99BA26B8AD4B5A74022AA741 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E469B8000EC1B5141BBD252B9F1E594 /* libPods-Kathari.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08EFD0A51F31E5FC2A9F862C5CCAFB8B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B2BB548571CF80071145230BE31C2B35 /* CALayer+Utils.swift */,
+				FF8D4B13F74B8AC5BE045C595A965A65 /* CGFloat+Utils.swift */,
+				1E7EC52470DF416AFC896EDB4EED7E1B /* Data+Utils.swift */,
+				6995E5813887DBF24871851C41A19F52 /* DateFormatter+Utils.swift */,
+				1D09F3B274A6193BDEBC39798A5960EF /* Dictionary+Utils.swift */,
+				FD69B65BBB8991068C6E41EABC540A59 /* Double+Utils.swift */,
+				F75F870EB0E57BFE2A127C4A3F5E33E4 /* NSMutableAttributedString+Utils.swift */,
+				A0C824AB38E7789A75E168597925DEC3 /* NavigationBar+Utils.swift */,
+				C7A7208F93D67586E675A3C1C9865DF3 /* Realm+Utils.swift */,
+				867B7361B18ADC0DB6C60B4BC6F1F8B3 /* Request+Utils.swift */,
+				00F73E093DB8792CA8DED448D04A8F6A /* String+Utils.swift */,
+				21B6E1EB026FE0264998F5B667007A1E /* UIApplication+Utils.swift */,
+				D42F2A9C3D1D894EE440A7EAA2E9F310 /* UIBarButtonItem+Utils.swift */,
+				7FF3E7A6B12466125162E9A20574447C /* UIColor+Utils.swift */,
+				254F831F2110B2FB1C1FB44D75B48638 /* UIFont+Utils.swift */,
+				4E5527DA8CAE330690D9E044580693D1 /* UIImage+Utils.swift */,
+				6F7C39E7267C3C41F96A212EADEB9D93 /* UIScrollView+Utils.swift */,
+				F0760553B9805A4A9644ECAA3E952927 /* UIStackView+Utils.swift */,
+				D99C00E95514A012209A7A5AEB2AE5AB /* UIView+Utils.swift */,
+				321B8C2FC3FA5DB742330B3843DC9675 /* UIViewController+Utils.swift */,
+				3661FB7724F28DEE00F2B833 /* AVCapturePosition+Utils.swift */,
+				3694DE7724F7174D0007466F /* Float+Utils.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		0E36AB1FF37F8DC954482DC422E58E3F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DAEF694B2C678A1BEED9D46514DFF24C /* Kathari - Clean Camera Feed.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3F840F7B88FA4BD31DE113577A11937E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				99EE93336E38F260D09B86C1051691CB /* CameraController.swift */,
+				5C8B2A683CC1CC93E8D9A2B09BE25F6C /* HomeViewController.swift */,
+				36038D6824E7DCDC00822696 /* HomeViewController+Settings.swift */,
+				36038D6A24E7DCEB00822696 /* HomeViewController+Camera.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		6CD3F75D03D3214BDF1846AD26022194 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8E1089BFBA09DD29BBDAD1FECCEF173D /* Pods-BoilerPlate.debug.xcconfig */,
+				F65C27C071C553FFD51FAC96769FF64D /* Pods-BoilerPlate.release.xcconfig */,
+				369E161C30EE9D7746817521E1493083 /* Pods-Kathari.debug.xcconfig */,
+				EC833CE33E508AB864273453984A9BFB /* Pods-Kathari.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7E5F76B42E9AA0C11BA74C63A573CCB7 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				C913562CC6B011F161DA999F7EA2F834 /* ImageName.swift */,
+				F0609C09A242E6EC9EACB45EB7146674 /* ScreenSizes.swift */,
+				CD5D27387F82563BEDAB708FB61F4A6B /* UIConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		A2E97FD2B6F0547BA6447F88B951147A /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				3F840F7B88FA4BD31DE113577A11937E /* Home */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		A646A5D7B5DA21A728BF50FAD8564437 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F1D3A85D0A4F851F930A409C8C5A3B85 /* libPods-Kathari.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AA62F9B815EAABC070D36C4B61A5CD72 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				87571BF2F8D904D301C0C52B5390F6C6 /* Assets.xcassets */,
+				CC46AC83FA6847A6067AF0441673A889 /* Info.plist */,
+				B546688D28266C68BB3A8A8269EEA932 /* LaunchScreen.storyboard */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		BDE604898C3A78F0ED6DAA7214A7CC39 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3661FB7324F2741B00F2B833 /* WindowView.swift */,
+				3661FB7524F2763500F2B833 /* TorchView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		D5831174AB1D41314ED0E7198250F810 /* Kathari */ = {
+			isa = PBXGroup;
+			children = (
+				BDE604898C3A78F0ED6DAA7214A7CC39 /* Components */,
+				7E5F76B42E9AA0C11BA74C63A573CCB7 /* Constants */,
+				08EFD0A51F31E5FC2A9F862C5CCAFB8B /* Extension */,
+				A2E97FD2B6F0547BA6447F88B951147A /* Module */,
+				AA62F9B815EAABC070D36C4B61A5CD72 /* SupportingFiles */,
+				18C4E06083475528DF45E8F86DA9AA1C /* AppCoordinator.swift */,
+				3BAE2622247CFD46451AEF9849A578DF /* AppDelegate.swift */,
+				DB63886ECBE8D725938D71943113232D /* Helper.swift */,
+				2C9685CD1C529FC339E756967D50F23D /* KHViewController.swift */,
+				4230F1BBE1A909A132A2BAE57F50FFFB /* SceneDelegate.swift */,
+			);
+			path = Kathari;
+			sourceTree = "<group>";
+		};
+		DE16C692BC2C41424C87126C95EE0C27 = {
+			isa = PBXGroup;
+			children = (
+				A646A5D7B5DA21A728BF50FAD8564437 /* Frameworks */,
+				D5831174AB1D41314ED0E7198250F810 /* Kathari */,
+				6CD3F75D03D3214BDF1846AD26022194 /* Pods */,
+				0E36AB1FF37F8DC954482DC422E58E3F /* Products */,
+				22CCF89D77B8DB72BB32055B5E7E0DEA /* .swiftlint.yml */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DDBDAAC24E5C76A1C19C4A947436601A /* Kathari */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F185CBFAFFEEF9FFCA2A45BC3FE1D732 /* Build configuration list for PBXNativeTarget "Kathari" */;
+			buildPhases = (
+				1EA8EFD1394A3BAB4B9909CAA90C9F7F /* [CP] Check Pods Manifest.lock */,
+				70E90DA283B2B2A353E3EA4F3AF007BE /* Sources */,
+				C7F3911D99BA26B8AD4B5A74022AA741 /* Frameworks */,
+				CEF61335B9D2A505901EC90BAC5E0B63 /* Resources */,
+				63319A37D7642FD0747B380B86C5F102 /* SwiftLint */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Kathari;
+			productName = BookReader;
+			productReference = DAEF694B2C678A1BEED9D46514DFF24C /* Kathari - Clean Camera Feed.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		222D436FC98483557F74D5148D80DE95 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Damisi Pikuda";
+				TargetAttributes = {
+					DDBDAAC24E5C76A1C19C4A947436601A = {
+						CreatedOnToolsVersion = 11.3;
+					};
+				};
+			};
+			buildConfigurationList = 337E8C6070780F72B22310427A7D3850 /* Build configuration list for PBXProject "Kathari" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DE16C692BC2C41424C87126C95EE0C27;
+			productRefGroup = 0E36AB1FF37F8DC954482DC422E58E3F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DDBDAAC24E5C76A1C19C4A947436601A /* Kathari */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CEF61335B9D2A505901EC90BAC5E0B63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D7004A4DB127F9CD3D68F3C00F0B777 /* .swiftlint.yml in Resources */,
+				472911EDC090BAA17DEF6E8871535B18 /* Assets.xcassets in Resources */,
+				1F7C249107C6E0DC1A68C44874669456 /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1EA8EFD1394A3BAB4B9909CAA90C9F7F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Kathari-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		63319A37D7642FD0747B380B86C5F102 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		70E90DA283B2B2A353E3EA4F3AF007BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B8CD83D26DD6D2535CD52FFC379F4D4 /* AppCoordinator.swift in Sources */,
+				50F39D6A8843F9E414A4C80F3AE7F1A8 /* AppDelegate.swift in Sources */,
+				726A56CD4069E201608E8ED8FF76ADE6 /* CALayer+Utils.swift in Sources */,
+				C18B481B7D7AFDA27E09A1FC55167AE3 /* CGFloat+Utils.swift in Sources */,
+				2562C55CC603F402E4774B42222B4388 /* CameraController.swift in Sources */,
+				6C93A68CCB8ED7262147975EEE864837 /* Data+Utils.swift in Sources */,
+				68C0A2BA353F8034B21FA08C5C921892 /* DateFormatter+Utils.swift in Sources */,
+				4191AC0A98EF414F51DFC4E98AB5D470 /* Dictionary+Utils.swift in Sources */,
+				D89A1B2FDC05B5E5C76EB7646B8E0B39 /* Double+Utils.swift in Sources */,
+				4D901313CE5B376C210F4CA75D25357D /* Helper.swift in Sources */,
+				B4400F30C4369D76631CFD1194DBB7FA /* HomeViewController.swift in Sources */,
+				93EE66A59083BB9801F28266AFE1E3EB /* ImageName.swift in Sources */,
+				24A3216FD8FFDC72168A98CB98504579 /* KHViewController.swift in Sources */,
+				B563BD92A1163EF49EEAEA31614FED00 /* NSMutableAttributedString+Utils.swift in Sources */,
+				280537F79F6655AD2CD5975217947A5D /* NavigationBar+Utils.swift in Sources */,
+				FDCF0D19C4978B36AD66A2EBFB82FE25 /* Realm+Utils.swift in Sources */,
+				D5B3619E0CF2849777899B270C8274AC /* Request+Utils.swift in Sources */,
+				72AE97C6CCE3EA74924B1067F073C595 /* SceneDelegate.swift in Sources */,
+				FECDE841CEE5BF810A2CE1920ECBD29B /* ScreenSizes.swift in Sources */,
+				AE4A1EEDF9CD403AAA43675D404755DE /* String+Utils.swift in Sources */,
+				EE39EEA2F8C6D4865F01EC5DFE6FA7A7 /* UIApplication+Utils.swift in Sources */,
+				36038D6924E7DCDC00822696 /* HomeViewController+Settings.swift in Sources */,
+				36038D6B24E7DCEB00822696 /* HomeViewController+Camera.swift in Sources */,
+				8FB247BE7C80342EE9631D1482830766 /* UIBarButtonItem+Utils.swift in Sources */,
+				819E0B2DE8393E39CCE318C59DD0E8F3 /* UIColor+Utils.swift in Sources */,
+				39F4F3B4563569AAFAF000364EEAC79C /* UIConstants.swift in Sources */,
+				3694DE7824F7174D0007466F /* Float+Utils.swift in Sources */,
+				FE410AA6B17866A9DA3F7A76250863CD /* UIFont+Utils.swift in Sources */,
+				3661FB7824F28DEE00F2B833 /* AVCapturePosition+Utils.swift in Sources */,
+				3661FB7424F2741B00F2B833 /* WindowView.swift in Sources */,
+				839FB3CEB4CA25255EBB54EB22F52900 /* UIImage+Utils.swift in Sources */,
+				E16E1FD3EF3B61474082ABFC862002E5 /* UIScrollView+Utils.swift in Sources */,
+				9070A6495ED9FCA48775832E8C7D0CEF /* UIStackView+Utils.swift in Sources */,
+				3661FB7624F2763500F2B833 /* TorchView.swift in Sources */,
+				C1E3148E5F8C4A0A0933DB0C054B38AB /* UIView+Utils.swift in Sources */,
+				4BB76107DEE172A3203285BF7C86FBB3 /* UIViewController+Utils.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B546688D28266C68BB3A8A8269EEA932 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				61C88A94E2DD2B0D72B202A2D3867E3C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		00FE1493690D0B857A40CBD7EB0AB0FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		15D788EB1393426977BC1E413C66610C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3BF84A98BA564D517B70B3B073AB2378 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC833CE33E508AB864273453984A9BFB /* Pods-Kathari.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5CZ6MXJL9N;
+				INFOPLIST_FILE = "$(SRCROOT)/Kathari/SupportingFiles/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Pikuda.Kathari;
+				PRODUCT_NAME = "Kathari - Clean Camera Feed";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CBE9B001BDD530866B7DC33DC09F4CF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 369E161C30EE9D7746817521E1493083 /* Pods-Kathari.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5CZ6MXJL9N;
+				INFOPLIST_FILE = "$(SRCROOT)/Kathari/SupportingFiles/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Pikuda.Kathari;
+				PRODUCT_NAME = "Kathari - Clean Camera Feed";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		337E8C6070780F72B22310427A7D3850 /* Build configuration list for PBXProject "Kathari" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15D788EB1393426977BC1E413C66610C /* Debug */,
+				00FE1493690D0B857A40CBD7EB0AB0FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F185CBFAFFEEF9FFCA2A45BC3FE1D732 /* Build configuration list for PBXNativeTarget "Kathari" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBE9B001BDD530866B7DC33DC09F4CF1 /* Debug */,
+				3BF84A98BA564D517B70B3B073AB2378 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 222D436FC98483557F74D5148D80DE95 /* Project object */;
+}

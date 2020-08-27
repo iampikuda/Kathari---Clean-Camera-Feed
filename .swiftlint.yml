@@ -1,0 +1,15 @@
+disabled_rules:
+  - todo
+  - identifier_name
+opt_in_rules:
+  - closure_end_indentation
+  - literal_expression_end_indentation
+  - vertical_parameter_alignment_on_call
+  - collection_alignment
+  - weak_delegate
+  - force_unwrapping
+excluded:
+  - Pods
+
+large_tuple:
+- 4
