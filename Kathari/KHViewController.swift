@@ -10,11 +10,11 @@ import UIKit
 
 class KHViewController: UIViewController {
 
-    final var screenHeight: CGFloat {
+    final var screenPortraitHeight: CGFloat {
         return max(UIScreen.main.bounds.height, UIScreen.main.bounds.width)
     }
 
-    final var screenWidth: CGFloat {
+    final var screenPortraitWidth: CGFloat {
         return min(UIScreen.main.bounds.height, UIScreen.main.bounds.width)
     }
 

@@ -49,19 +49,35 @@ class WindowView: UIView {
         backgroundView.addGestureRecognizer(tapGesture)
         backgroundColor = UIColor.clear
         clipsToBounds = true
+        setupObservers()
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    private func setupObservers() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(transformOrientation),
+            name: UIDevice.orientationDidChangeNotification,
+            object: nil
+        )
+    }
+
+    @objc private func transformOrientation() {
+        if isShowing {
+            show()
+        }
     }
 
     @objc private func backgroundTapped() {
         hide()
     }
 
-    func setupTheme() {
-    }
-
     func setupViews() {
         setFrame()
         setupBackgrounView()
-        setupTheme()
         addToWindow()
     }
 

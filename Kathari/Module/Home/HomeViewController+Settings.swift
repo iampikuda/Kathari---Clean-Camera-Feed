@@ -46,6 +46,22 @@ extension HomeViewController {
                 torchView.initialLevel = previousTorchLevel
                 torchView.show()
             }
+
+            if exposureView.isShowing {
+                exposureView.hide()
+            }
+        } else if isoView.frame.contains(tapLocation) {
+            if !exposureView.isShowing {
+                if let device = activeCamera {
+                    exposureView.initialLevel = device.iso
+                    exposureView.setMinMax(min: device.activeFormat.minISO, max: device.activeFormat.maxISO)
+                }
+                exposureView.show()
+            }
+
+            if torchView.isShowing {
+                torchView.hide()
+            }
         }
     }
 
@@ -66,7 +82,36 @@ extension HomeViewController {
             } else {
                 torchOff()
             }
+        } else if isoView.frame.contains(tapLocation) {
+            self.toggleIso()
         }
+    }
+
+    func toggleIso() {
+        guard let device = activeCamera else {
+            Helper.logError(KHError(message: "Couldn't find active cam"))
+            return
+        }
+
+        configureDevice(device) { (lockedDevice) in
+            if self.autoIso, lockedDevice.isExposureModeSupported(.continuousAutoExposure) {
+                lockedDevice.exposureMode = .continuousAutoExposure
+
+                DispatchQueue.main.async {
+                    self.isoView.setIso(nil)
+                    self.isoView.setColor(.gold)
+                }
+            } else if lockedDevice.isExposureModeSupported(.locked) {
+                lockedDevice.exposureMode = .locked
+
+                DispatchQueue.main.async {
+                    self.isoView.setIso(device.iso)
+                    self.isoView.setColor(.white)
+                }
+            }
+        }
+
+        autoIso.toggle()
     }
 
     func setTorchLevel(to level: Float) {
@@ -122,10 +167,52 @@ extension HomeViewController {
             Helper.logError(KHError(message: "Torch is not available"))
         }
     }
+
+    func setupIsoObserver() {
+        addObserver(self, forKeyPath: "activeCamera.ISO", options: [.initial, .new], context: nil)
+    }
+
+    // swiftlint:disable:next block_based_kvo
+    override func observeValue(
+        forKeyPath keyPath: String?,
+        of object: Any?,
+        change: [NSKeyValueChangeKey: Any]?,
+        context: UnsafeMutableRawPointer?
+    ) {
+        if keyPath == "activeCamera.ISO" {
+            if let device = activeCamera, autoIso, sessionSetupSucceeds {
+                DispatchQueue.main.async {
+                    if self.exposureView.isShowing {
+                        self.exposureView.setValue(device.iso)
+                    }
+                }
+            }
+        }
+    }
 }
 
-extension HomeViewController: TorchViewDelegate {
-    func sliderValueChanged(to value: Float) {
-        setTorchLevel(to: value)
+extension HomeViewController: SliderViewDelegate {
+    func slider(_ slider: SliderView, changedTo value: Float) {
+        if slider == torchView {
+            setTorchLevel(to: value)
+        } else {
+            if let device = activeCamera {
+                configureDevice(device) { (device) in
+                    device.setExposureModeCustom(
+                        duration: device.exposureDuration,
+                        iso: value,
+                        completionHandler: nil
+                    )
+                }
+
+                DispatchQueue.main.async {
+                    self.isoView.setIso(device.iso)
+                    if self.autoIso {
+                        self.autoIso.toggle()
+                        self.isoView.setColor(.white)
+                    }
+                }
+            }
+        }
     }
 }

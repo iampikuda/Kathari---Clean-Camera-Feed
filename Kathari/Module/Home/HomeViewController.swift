@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import AVFoundation
+import UserNotifications
 
 final class HomeViewController: KHViewController {
 
@@ -34,11 +35,13 @@ final class HomeViewController: KHViewController {
         return imageView
     }()
 
+    let isoView = IsoContainer()
+
     let buttonStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.alignment = .center
-        stackView.distribution = .equalCentering
+        stackView.distribution = .fillEqually
         stackView.spacing = 11
         return stackView
     }()
@@ -49,29 +52,32 @@ final class HomeViewController: KHViewController {
 
     // Camera
     lazy var session = AVCaptureSession()
+    lazy var previewView = UIView()
     lazy var previewLayer = AVCaptureVideoPreviewLayer(session: session)
-    var activeCamera: AVCaptureDevice?
-    var zoomScaleRange: ClosedRange<CGFloat> = 1...10
+    @objc dynamic var activeCamera: AVCaptureDevice?
+    var zoomScaleRange: ClosedRange<CGFloat> = 1...5
 
     let sessionQueue = DispatchQueue(label: "Session Queue")
 
-    // Torch
-    lazy var torchView: TorchView = {
-        let view = TorchView(anchor: flashImageView)
+    lazy var exposureView: SliderView = {
+        let view = SliderView(anchor: isoView)
         view.delegate = self
         return view
     }()
-    lazy var torchIsActiveObserver = NSKeyValueObservation()
+
+    var autoIso = true
+
+    // Torch
+    lazy var torchView: SliderView = {
+        let view = SliderView(anchor: flashImageView)
+        view.delegate = self
+        return view
+    }()
+
     var previousTorchLevel: Float = 1
-
-    var sessionSetupSucceeds = false
-
     var torchCanBeTapped = true
 
-    override init(screenSize: CGSize = UIScreen.main.bounds.size) {
-
-        super.init(screenSize: screenSize)
-    }
+    var sessionSetupSucceeds = false
 
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -90,26 +96,26 @@ final class HomeViewController: KHViewController {
 
     private func setupOverlay() {
         overlayView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
-        overlayView.layer.cornerRadius = 5
+        overlayView.layer.cornerRadius = 10
         overlayView.isUserInteractionEnabled = true
         overlayView.isHidden = true
         // FIXME: change to black
         view.backgroundColor = .white
         view.addSubview(overlayView)
         overlayView.snp.makeConstraints { (make) in
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-2)
             make.centerX.equalTo(view)
-            make.width.equalTo(self.screenWidth * 0.98)
+            make.width.equalTo(self.screenPortraitWidth * 0.6)
             make.height.equalTo(50)
         }
 
         overlayView.addSubview(buttonStackView)
         buttonStackView.snp.makeConstraints { (make) in
             make.centerY.left.right.equalTo(overlayView)
-            make.height.equalTo(overlayView).multipliedBy(0.8)
+            make.height.equalTo(overlayView).multipliedBy(0.7)
         }
 
-        buttonStackView.addArrangedSubviews([flashImageView])
+        buttonStackView.addArrangedSubviews([flashImageView, isoView])
     }
 }
 

@@ -1,23 +1,21 @@
 //
-//  TorchView.swift
+//  SliderView.swift
 //  Kathari
 //
-//  Created by Oluwadamisi Pikuda on 23/08/2020.
+//  Created by Oluwadamisi Pikuda on 28/08/2020.
 //  Copyright © 2020 Damisi Pikuda. All rights reserved.
 //
 
 import UIKit
 import SnapKit
 import TactileSlider
-import AVFoundation
 
-protocol TorchViewDelegate: class {
-    func sliderValueChanged(to value: Float)
+protocol SliderViewDelegate: class {
+    func slider(_ slider: SliderView, changedTo value: Float)
 }
 
-final class TorchView: WindowView {
-
-    weak var delegate: TorchViewDelegate?
+class SliderView: WindowView {
+    weak var delegate: SliderViewDelegate?
 
     private let viewArea = UIView()
     private let sliderWidth: CGFloat = 80
@@ -26,16 +24,17 @@ final class TorchView: WindowView {
 
     var initialLevel: Float = 1
 
-    private let anchoredRect: CGRect
+    override var height: CGFloat {
+        return UIApplication.safeLayoutRect().height
+            - anchoredRect.height
+            - 10
+    }
+
+    private let anchorView: UIView
+    private var anchoredRect: CGRect = .zero
 
     init(anchor: UIView) {
-        if let rect = anchor.superview?.convert(anchor.frame, to: UIApplication.visibleWindow()) {
-            self.anchoredRect = rect
-        } else {
-            self.anchoredRect = anchor.convert(anchor.frame, to: UIApplication.visibleWindow())
-            Helper.logError(KHError(message: "Dropdown may fail... no superview for anchorView"))
-        }
-
+        self.anchorView = anchor
         super.init(frame: .zero)
     }
 
@@ -45,8 +44,18 @@ final class TorchView: WindowView {
     }
 
     override func setupViews() {
+        setupAnchorRect()
         super.setupViews()
         setupSlider()
+    }
+
+    private func setupAnchorRect() {
+        if let rect = anchorView.superview?.convert(anchorView.frame, to: UIApplication.visibleWindow()) {
+            self.anchoredRect = rect
+        } else {
+            self.anchoredRect = anchorView.convert(anchorView.frame, to: UIApplication.visibleWindow())
+            Helper.logError(KHError(message: "ExposureView may fail... no superview for anchorView"))
+        }
     }
 
     private func setupSlider() {
@@ -61,17 +70,6 @@ final class TorchView: WindowView {
 
         slider.addTarget(self, action: #selector(sliderSlid(_:)), for: .valueChanged)
 
-//        if let device = AVCaptureDevice.default(for: .video) {
-//            print(device.torchLevel)
-//            device.observe(\.isTorchActive, options: .) { (device, value) in
-//                print("#####")
-//                print(value)
-//                print(device.torchLevel)
-//                print("#####")
-//            }
-//            slider.setValue(device.torchLevel, animated: true)
-//        }
-
         viewArea.frame = CGRect(
             x: anchoredRect.midX - (sliderWidth / 2),
             y: anchoredRect.origin.y - sliderHeight - cordY - 8,
@@ -85,6 +83,16 @@ final class TorchView: WindowView {
             width: sliderWidth,
             height: sliderHeight
         )
+    }
+
+    func setMinMax(min: Float, max: Float) {
+        self.slider.minimum = min
+        self.slider.maximum = max
+    }
+
+    func setValue(_ value: Float) {
+        slider.setValue(value, animated: true)
+        initialLevel = value
     }
 
     override func show() {
@@ -119,6 +127,6 @@ final class TorchView: WindowView {
     }
 
     @objc private func sliderSlid(_ slider: TactileSlider) {
-        self.delegate?.sliderValueChanged(to: slider.value.roundTo(1))
+        self.delegate?.slider(self, changedTo: slider.value)
     }
 }

@@ -14,9 +14,12 @@
 		36038D6924E7DCDC00822696 /* HomeViewController+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36038D6824E7DCDC00822696 /* HomeViewController+Settings.swift */; };
 		36038D6B24E7DCEB00822696 /* HomeViewController+Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36038D6A24E7DCEB00822696 /* HomeViewController+Camera.swift */; };
 		3661FB7424F2741B00F2B833 /* WindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3661FB7324F2741B00F2B833 /* WindowView.swift */; };
-		3661FB7624F2763500F2B833 /* TorchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3661FB7524F2763500F2B833 /* TorchView.swift */; };
 		3661FB7824F28DEE00F2B833 /* AVCapturePosition+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3661FB7724F28DEE00F2B833 /* AVCapturePosition+Utils.swift */; };
+		36726F1D24F9643600C09523 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36726F1C24F9643600C09523 /* SliderView.swift */; };
+		36726F2124F9C1FD00C09523 /* IsoContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36726F2024F9C1FD00C09523 /* IsoContainer.swift */; };
 		3694DE7824F7174D0007466F /* Float+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3694DE7724F7174D0007466F /* Float+Utils.swift */; };
+		36A8676B24FAD21D00B62B91 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A8676A24FAD21D00B62B91 /* HelpView.swift */; };
+		36E48EC424F92D9000E88F24 /* VerticalFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E48EC324F92D9000E88F24 /* VerticalFlowLayout.swift */; };
 		39F4F3B4563569AAFAF000364EEAC79C /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5D27387F82563BEDAB708FB61F4A6B /* UIConstants.swift */; };
 		4191AC0A98EF414F51DFC4E98AB5D470 /* Dictionary+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D09F3B274A6193BDEBC39798A5960EF /* Dictionary+Utils.swift */; };
 		472911EDC090BAA17DEF6E8871535B18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87571BF2F8D904D301C0C52B5390F6C6 /* Assets.xcassets */; };
@@ -62,10 +65,13 @@
 		36038D6824E7DCDC00822696 /* HomeViewController+Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Settings.swift"; sourceTree = "<group>"; };
 		36038D6A24E7DCEB00822696 /* HomeViewController+Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Camera.swift"; sourceTree = "<group>"; };
 		3661FB7324F2741B00F2B833 /* WindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowView.swift; sourceTree = "<group>"; };
-		3661FB7524F2763500F2B833 /* TorchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorchView.swift; sourceTree = "<group>"; };
 		3661FB7724F28DEE00F2B833 /* AVCapturePosition+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCapturePosition+Utils.swift"; sourceTree = "<group>"; };
+		36726F1C24F9643600C09523 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		36726F2024F9C1FD00C09523 /* IsoContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsoContainer.swift; sourceTree = "<group>"; };
 		3694DE7724F7174D0007466F /* Float+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Utils.swift"; sourceTree = "<group>"; };
 		369E161C30EE9D7746817521E1493083 /* Pods-Kathari.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kathari.debug.xcconfig"; path = "Target Support Files/Pods-Kathari/Pods-Kathari.debug.xcconfig"; sourceTree = "<group>"; };
+		36A8676A24FAD21D00B62B91 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
+		36E48EC324F92D9000E88F24 /* VerticalFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalFlowLayout.swift; sourceTree = "<group>"; };
 		3BAE2622247CFD46451AEF9849A578DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4230F1BBE1A909A132A2BAE57F50FFFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4E5527DA8CAE330690D9E044580693D1 /* UIImage+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
@@ -208,8 +214,11 @@
 		BDE604898C3A78F0ED6DAA7214A7CC39 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				36726F2024F9C1FD00C09523 /* IsoContainer.swift */,
 				3661FB7324F2741B00F2B833 /* WindowView.swift */,
-				3661FB7524F2763500F2B833 /* TorchView.swift */,
+				36E48EC324F92D9000E88F24 /* VerticalFlowLayout.swift */,
+				36726F1C24F9643600C09523 /* SliderView.swift */,
+				36A8676A24FAD21D00B62B91 /* HelpView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -359,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B8CD83D26DD6D2535CD52FFC379F4D4 /* AppCoordinator.swift in Sources */,
+				36A8676B24FAD21D00B62B91 /* HelpView.swift in Sources */,
 				50F39D6A8843F9E414A4C80F3AE7F1A8 /* AppDelegate.swift in Sources */,
 				726A56CD4069E201608E8ED8FF76ADE6 /* CALayer+Utils.swift in Sources */,
 				C18B481B7D7AFDA27E09A1FC55167AE3 /* CGFloat+Utils.swift in Sources */,
@@ -367,6 +377,7 @@
 				68C0A2BA353F8034B21FA08C5C921892 /* DateFormatter+Utils.swift in Sources */,
 				4191AC0A98EF414F51DFC4E98AB5D470 /* Dictionary+Utils.swift in Sources */,
 				D89A1B2FDC05B5E5C76EB7646B8E0B39 /* Double+Utils.swift in Sources */,
+				36726F1D24F9643600C09523 /* SliderView.swift in Sources */,
 				4D901313CE5B376C210F4CA75D25357D /* Helper.swift in Sources */,
 				B4400F30C4369D76631CFD1194DBB7FA /* HomeViewController.swift in Sources */,
 				93EE66A59083BB9801F28266AFE1E3EB /* ImageName.swift in Sources */,
@@ -386,12 +397,13 @@
 				39F4F3B4563569AAFAF000364EEAC79C /* UIConstants.swift in Sources */,
 				3694DE7824F7174D0007466F /* Float+Utils.swift in Sources */,
 				FE410AA6B17866A9DA3F7A76250863CD /* UIFont+Utils.swift in Sources */,
+				36E48EC424F92D9000E88F24 /* VerticalFlowLayout.swift in Sources */,
 				3661FB7824F28DEE00F2B833 /* AVCapturePosition+Utils.swift in Sources */,
 				3661FB7424F2741B00F2B833 /* WindowView.swift in Sources */,
 				839FB3CEB4CA25255EBB54EB22F52900 /* UIImage+Utils.swift in Sources */,
 				E16E1FD3EF3B61474082ABFC862002E5 /* UIScrollView+Utils.swift in Sources */,
+				36726F2124F9C1FD00C09523 /* IsoContainer.swift in Sources */,
 				9070A6495ED9FCA48775832E8C7D0CEF /* UIStackView+Utils.swift in Sources */,
-				3661FB7624F2763500F2B833 /* TorchView.swift in Sources */,
 				C1E3148E5F8C4A0A0933DB0C054B38AB /* UIView+Utils.swift in Sources */,
 				4BB76107DEE172A3203285BF7C86FBB3 /* UIViewController+Utils.swift in Sources */,
 			);

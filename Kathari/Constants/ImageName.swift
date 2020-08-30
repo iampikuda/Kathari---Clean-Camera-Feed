@@ -11,4 +11,5 @@ import Foundation
 enum ImageName: String {
     case empty = ""
     case flash = "Flash"
+    case iso = "Iso"
 }

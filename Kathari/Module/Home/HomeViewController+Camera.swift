@@ -22,6 +22,14 @@ extension HomeViewController {
         }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupIsoObserver()
+        DispatchQueue.main.async {
+            self.transformOrientation()
+        }
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if sessionSetupSucceeds {
@@ -32,7 +40,9 @@ extension HomeViewController {
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.previewLayer.frame = self.view.layer.bounds
+        DispatchQueue.main.async {
+            self.previewLayer.frame = self.previewView.bounds
+        }
     }
 
     func setupCameraView() {
@@ -72,60 +82,84 @@ extension HomeViewController {
         default:
             break
         }
+        self.transformOrientation()
     }
 
     private func setupPreviewLayer() {
-        view.layer.insertSublayer(previewLayer, at: 0)
-        previewLayer.frame.size = view.frame.size
-        previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        transformOrientation()
+        previewLayer.videoGravity = .resizeAspectFill
+        view.addSubview(previewView)
+        previewView.snp.makeConstraints { (make) in
+            make.edges.equalTo(view)
+        }
+
+        previewView.layer.insertSublayer(previewLayer, at: 0)
+        previewLayer.frame = previewView.bounds
     }
 
     private func setupTapGestures() {
         let switchRecognizer = UITapGestureRecognizer(target: self, action: #selector(switchCameraSide))
         switchRecognizer.numberOfTapsRequired = 2
         switchRecognizer.delegate = self
-        view.addGestureRecognizer(switchRecognizer)
-        view.isUserInteractionEnabled = true
+        previewView.addGestureRecognizer(switchRecognizer)
+        previewView.isUserInteractionEnabled = true
     }
 
     private func setupPinchGesture() {
         let gestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinchCamera(_:)))
-        view.addGestureRecognizer(gestureRecognizer)
+        previewView.addGestureRecognizer(gestureRecognizer)
     }
 
     private func setupObservers() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(transformOrientation),
-                                               name: UIDevice.orientationDidChangeNotification,
-                                               object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(transformOrientation),
+            name: UIDevice.orientationDidChangeNotification,
+            object: nil
+        )
     }
 
     @objc private func transformOrientation() {
-        switch UIDevice.current.orientation {
-        case .portrait:
-            self.previewLayer.connection?.videoOrientation = .portrait
+        switch UIApplication.visibleWindow()?.windowScene?.interfaceOrientation {
         case .landscapeRight:
-            self.previewLayer.connection?.videoOrientation = .landscapeLeft
+            self.previewLayer.connection?.videoOrientation = .landscapeRight
         case .portraitUpsideDown:
             self.previewLayer.connection?.videoOrientation = .portraitUpsideDown
         case .landscapeLeft:
-            self.previewLayer.connection?.videoOrientation = .landscapeRight
+            self.previewLayer.connection?.videoOrientation = .landscapeLeft
         default:
-            break
+            self.previewLayer.connection?.videoOrientation = .portrait
         }
+    }
 
+    private func showFlipError() {
+        DispatchQueue.main.async {
+            self.showAlertWithOkAction(title: "Arrgh!", message: "We couldn't flip the camera.")
+        }
     }
 
     private func setCamera(_ position: AVCaptureDevice.Position) throws {
         session.beginConfiguration()
         if let currentInput = session.inputs.first { session.removeInput(currentInput) }
 
-        guard let device = getCameraForPosition(position),
-            let newVideoInput = try? AVCaptureDeviceInput(device: device),
-            session.canAddInput(newVideoInput) else {
-                showAlertWithOkAction(title: "Arrgh!", message: "We couldn't flip the camera.")
-                throw KHError(message: "Couldn't find camera at new position \(String(describing: position))")
+        guard let device = getCameraForPosition(position) else {
+            showFlipError()
+            throw KHError(message: "Couldn't find camera at new position \(String(describing: position))")
+        }
+
+        if device.supportsSessionPreset(.hd4K3840x2160), session.canSetSessionPreset(.hd4K3840x2160) {
+            session.sessionPreset = .hd4K3840x2160
+        } else {
+            session.sessionPreset = .high
+        }
+
+        guard let newVideoInput = try? AVCaptureDeviceInput(device: device) else {
+            showFlipError()
+            throw KHError(message: "Couldn't create new input")
+        }
+
+        guard session.canAddInput(newVideoInput) else {
+            showFlipError()
+            throw KHError(message: "Couldn't add input to session")
         }
 
         device.hasTorch ? enableTorch() : disableTorch()
@@ -134,9 +168,22 @@ extension HomeViewController {
             if lockedDevice.isFocusModeSupported(.continuousAutoFocus) {
                 lockedDevice.focusMode = .continuousAutoFocus
             }
+
+            if lockedDevice.isExposureModeSupported(.continuousAutoExposure) {
+                lockedDevice.exposureMode = .continuousAutoExposure
+            }
+        }
+
+        DispatchQueue.main.async {
+            if !self.autoIso {
+                self.isoView.setIso(nil)
+                self.isoView.setColor(.gold)
+                self.autoIso.toggle()
+            }
         }
 
         activeCamera = device
+        setupIsoObserver()
         session.addInput(newVideoInput)
         session.commitConfiguration()
     }
@@ -211,7 +258,7 @@ extension HomeViewController {
 
     private func getCameraForPosition(_ position: AVCaptureDevice.Position) -> AVCaptureDevice? {
         return AVCaptureDevice.DiscoverySession(
-            deviceTypes: [.builtInDualCamera, .builtInWideAngleCamera, .builtInTelephotoCamera ],
+            deviceTypes: [.builtInWideAngleCamera, .builtInDualCamera, .builtInTelephotoCamera],
             mediaType: .video,
             position: position
         ).devices.first
