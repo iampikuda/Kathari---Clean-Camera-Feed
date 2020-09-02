@@ -101,6 +101,14 @@ extension HomeViewController {
         switchRecognizer.numberOfTapsRequired = 2
         switchRecognizer.delegate = self
         previewView.addGestureRecognizer(switchRecognizer)
+
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(cameraTapped))
+        tapRecognizer.numberOfTapsRequired = 1
+//        tapRecognizer.delegate = self
+        previewView.addGestureRecognizer(tapRecognizer)
+
+        tapRecognizer.require(toFail: switchRecognizer)
+
         previewView.isUserInteractionEnabled = true
     }
 
@@ -121,12 +129,20 @@ extension HomeViewController {
     @objc private func transformOrientation() {
         switch UIApplication.visibleWindow()?.windowScene?.interfaceOrientation {
         case .landscapeRight:
+            print("LandRIGHT")
+            self.helpView.transformOrientation(interfaceOrientation: .landscapeRight)
             self.previewLayer.connection?.videoOrientation = .landscapeRight
         case .portraitUpsideDown:
+            print("UPsideDown")
+            self.helpView.transformOrientation(interfaceOrientation: .portraitUpsideDown)
             self.previewLayer.connection?.videoOrientation = .portraitUpsideDown
         case .landscapeLeft:
+            print("LandLEFT")
+            self.helpView.transformOrientation(interfaceOrientation: .landscapeLeft)
             self.previewLayer.connection?.videoOrientation = .landscapeLeft
         default:
+            print("everythoing else")
+            self.helpView.transformOrientation(interfaceOrientation: .portrait)
             self.previewLayer.connection?.videoOrientation = .portrait
         }
     }
@@ -186,6 +202,10 @@ extension HomeViewController {
         setupIsoObserver()
         session.addInput(newVideoInput)
         session.commitConfiguration()
+    }
+
+    @objc private func cameraTapped() {
+        helpView.isHidden = true
     }
 
     @objc private func switchCameraSide() {
@@ -257,10 +277,16 @@ extension HomeViewController {
     }
 
     private func getCameraForPosition(_ position: AVCaptureDevice.Position) -> AVCaptureDevice? {
-        return AVCaptureDevice.DiscoverySession(
+        let allCams = AVCaptureDevice.DiscoverySession(
             deviceTypes: [.builtInWideAngleCamera, .builtInDualCamera, .builtInTelephotoCamera],
             mediaType: .video,
             position: position
-        ).devices.first
+        ).devices
+
+        print(allCams)
+        print(allCams.count)
+        print(allCams.first?.localizedName)
+        print(String(describing: allCams.first?.deviceType))
+        return allCams.first
     }
 }

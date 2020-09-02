@@ -9,7 +9,19 @@
 import Foundation
 
 enum ImageName: String {
-    case empty = ""
+    case chevronDown = "ChevronDown"
+    case close = "Close"
+    case doubleTap = "DoubleTap"
     case flash = "Flash"
+    case help = "Help"
     case iso = "Iso"
+    case longPress = "LongPress"
+    case pinch = "Pinch"
+    case rgb = "RGBFlatIcon"
+    case swipeDown = "SwipeDown"
+    case swipeLeft = "SwipeLeft"
+    case swipeRight = "SwipeRight"
+    case swipeUp = "SwipeUp"
+    case tap = "Tap"
+    case whiteBalance = "WhiteBalanceFlatIcon"
 }

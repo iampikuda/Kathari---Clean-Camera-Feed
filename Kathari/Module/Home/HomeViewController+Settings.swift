@@ -12,6 +12,27 @@ import AVFoundation
 
 extension HomeViewController {
     func setupSettingsView() {
+        settingsView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        settingsView.layer.cornerRadius = 10
+        settingsView.isUserInteractionEnabled = true
+        settingsView.isHidden = true
+
+        view.addSubview(settingsView)
+        settingsView.snp.makeConstraints { (make) in
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-2)
+            make.centerX.equalTo(view)
+            make.width.equalTo(self.screenPortraitWidth * 0.9)
+            make.height.equalTo(50)
+        }
+
+        settingsView.addSubview(settingsStackView)
+        settingsStackView.snp.makeConstraints { (make) in
+            make.centerY.left.right.equalTo(settingsView)
+            make.height.equalTo(settingsView).multipliedBy(0.7)
+        }
+
+        settingsStackView.addArrangedSubviews([flashImageView, isoView, wbImageView, rgbImageView, helpImageView])
+
         setupButtonStackView()
         setupSwipeGesture()
         setupLongPress()
@@ -19,8 +40,8 @@ extension HomeViewController {
 
     private func setupButtonStackView() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(buttonTapped(_:)))
-        buttonStackView.isUserInteractionEnabled = true
-        buttonStackView.addGestureRecognizer(tapGesture)
+        settingsStackView.isUserInteractionEnabled = true
+        settingsStackView.addGestureRecognizer(tapGesture)
     }
 
     private func setupSwipeGesture() {
@@ -34,11 +55,11 @@ extension HomeViewController {
 
     private func setupLongPress() {
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressed(_:)))
-        buttonStackView.addGestureRecognizer(longPress)
+        settingsStackView.addGestureRecognizer(longPress)
     }
 
     @objc func longPressed(_ sender: UILongPressGestureRecognizer) {
-        let tapLocation = sender.location(in: buttonStackView)
+        let tapLocation = sender.location(in: settingsStackView)
 
         if flashImageView.frame.contains(tapLocation) && torchCanBeTapped {
             if !torchView.isShowing {
@@ -67,14 +88,15 @@ extension HomeViewController {
 
     @objc func swipeGesture(_ sender: UISwipeGestureRecognizer) {
         if sender.direction == .up {
-            overlayView.isHidden = false
+            settingsView.isHidden = false
         } else if sender.direction == .down {
-            overlayView.isHidden = true
+            settingsView.isHidden = true
+            helpView.isHidden = true
         }
     }
 
     @objc func buttonTapped(_ sender: UITapGestureRecognizer) {
-        let tapLocation = sender.location(in: buttonStackView)
+        let tapLocation = sender.location(in: settingsStackView)
 
         if flashImageView.frame.contains(tapLocation) && torchCanBeTapped, let device = activeCamera {
             if device.torchMode == .off {
@@ -84,6 +106,8 @@ extension HomeViewController {
             }
         } else if isoView.frame.contains(tapLocation) {
             self.toggleIso()
+        } else if helpImageView.frame.contains(tapLocation) {
+            self.helpView.isHidden.toggle()
         }
     }
 

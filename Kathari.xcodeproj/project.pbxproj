@@ -17,8 +17,10 @@
 		3661FB7824F28DEE00F2B833 /* AVCapturePosition+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3661FB7724F28DEE00F2B833 /* AVCapturePosition+Utils.swift */; };
 		36726F1D24F9643600C09523 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36726F1C24F9643600C09523 /* SliderView.swift */; };
 		36726F2124F9C1FD00C09523 /* IsoContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36726F2024F9C1FD00C09523 /* IsoContainer.swift */; };
+		367DFB4E24FE5E700046F6FF /* ArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367DFB4D24FE5E700046F6FF /* ArrowView.swift */; };
 		3694DE7824F7174D0007466F /* Float+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3694DE7724F7174D0007466F /* Float+Utils.swift */; };
 		36A8676B24FAD21D00B62B91 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A8676A24FAD21D00B62B91 /* HelpView.swift */; };
+		36B61ED724FD4CCD00F47C43 /* GestureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B61ED624FD4CCD00F47C43 /* GestureView.swift */; };
 		36E48EC424F92D9000E88F24 /* VerticalFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E48EC324F92D9000E88F24 /* VerticalFlowLayout.swift */; };
 		39F4F3B4563569AAFAF000364EEAC79C /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5D27387F82563BEDAB708FB61F4A6B /* UIConstants.swift */; };
 		4191AC0A98EF414F51DFC4E98AB5D470 /* Dictionary+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D09F3B274A6193BDEBC39798A5960EF /* Dictionary+Utils.swift */; };
@@ -68,9 +70,11 @@
 		3661FB7724F28DEE00F2B833 /* AVCapturePosition+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCapturePosition+Utils.swift"; sourceTree = "<group>"; };
 		36726F1C24F9643600C09523 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		36726F2024F9C1FD00C09523 /* IsoContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsoContainer.swift; sourceTree = "<group>"; };
+		367DFB4D24FE5E700046F6FF /* ArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowView.swift; sourceTree = "<group>"; };
 		3694DE7724F7174D0007466F /* Float+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Utils.swift"; sourceTree = "<group>"; };
 		369E161C30EE9D7746817521E1493083 /* Pods-Kathari.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kathari.debug.xcconfig"; path = "Target Support Files/Pods-Kathari/Pods-Kathari.debug.xcconfig"; sourceTree = "<group>"; };
 		36A8676A24FAD21D00B62B91 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
+		36B61ED624FD4CCD00F47C43 /* GestureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureView.swift; sourceTree = "<group>"; };
 		36E48EC324F92D9000E88F24 /* VerticalFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalFlowLayout.swift; sourceTree = "<group>"; };
 		3BAE2622247CFD46451AEF9849A578DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4230F1BBE1A909A132A2BAE57F50FFFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 				36E48EC324F92D9000E88F24 /* VerticalFlowLayout.swift */,
 				36726F1C24F9643600C09523 /* SliderView.swift */,
 				36A8676A24FAD21D00B62B91 /* HelpView.swift */,
+				36B61ED624FD4CCD00F47C43 /* GestureView.swift */,
+				367DFB4D24FE5E700046F6FF /* ArrowView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -379,8 +385,10 @@
 				D89A1B2FDC05B5E5C76EB7646B8E0B39 /* Double+Utils.swift in Sources */,
 				36726F1D24F9643600C09523 /* SliderView.swift in Sources */,
 				4D901313CE5B376C210F4CA75D25357D /* Helper.swift in Sources */,
+				367DFB4E24FE5E700046F6FF /* ArrowView.swift in Sources */,
 				B4400F30C4369D76631CFD1194DBB7FA /* HomeViewController.swift in Sources */,
 				93EE66A59083BB9801F28266AFE1E3EB /* ImageName.swift in Sources */,
+				36B61ED724FD4CCD00F47C43 /* GestureView.swift in Sources */,
 				24A3216FD8FFDC72168A98CB98504579 /* KHViewController.swift in Sources */,
 				B563BD92A1163EF49EEAEA31614FED00 /* NSMutableAttributedString+Utils.swift in Sources */,
 				280537F79F6655AD2CD5975217947A5D /* NavigationBar+Utils.swift in Sources */,

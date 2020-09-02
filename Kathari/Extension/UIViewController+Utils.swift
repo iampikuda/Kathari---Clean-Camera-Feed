@@ -126,14 +126,14 @@ extension UIViewController {
         navBar?.tintColor = UIColor.black
     }
 
-    func configureBackButtonColor(_ color: UIColor) {
-        navigationItem.leftBarButtonItem = UIBarButtonItem.makeButton(
-            self,
-            action: #selector(pop),
-            imageName: .empty,
-            imageColor: .lightGray
-        )
-    }
+//    func configureBackButtonColor(_ color: UIColor) {
+//        navigationItem.leftBarButtonItem = UIBarButtonItem.makeButton(
+//            self,
+//            action: #selector(pop),
+//            imageName: .empty,
+//            imageColor: .lightGray
+//        )
+//    }
 
     @objc private func pop() {
         navigationController?.popViewController(animated: true)

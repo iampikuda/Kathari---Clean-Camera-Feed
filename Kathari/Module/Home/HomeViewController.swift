@@ -35,9 +35,35 @@ final class HomeViewController: KHViewController {
         return imageView
     }()
 
+    let wbImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(imageName: .whiteBalance)?.withRenderingMode(.alwaysTemplate)
+        imageView.clipsToBounds = true
+        imageView.tintColor = .white
+        return imageView
+    }()
+
+    let rgbImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(imageName: .rgb)
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+
+    let helpImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(imageName: .help)?.withRenderingMode(.alwaysTemplate)
+        imageView.clipsToBounds = true
+        imageView.tintColor = .white
+        return imageView
+    }()
+
     let isoView = IsoContainer()
 
-    let buttonStackView: UIStackView = {
+    let settingsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.alignment = .center
@@ -46,7 +72,17 @@ final class HomeViewController: KHViewController {
         return stackView
     }()
 
-    let overlayView = UIView()
+    let camStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.distribution = .fillEqually
+        stackView.spacing = 11
+        return stackView
+    }()
+
+    let settingsView = UIView()
+    let availableCamView = UIView()
 
     var lastZoomFactor: CGFloat = 0
 
@@ -77,6 +113,8 @@ final class HomeViewController: KHViewController {
     var previousTorchLevel: Float = 1
     var torchCanBeTapped = true
 
+    let helpView = HelpView()
+
     var sessionSetupSucceeds = false
 
     deinit {
@@ -90,32 +128,21 @@ final class HomeViewController: KHViewController {
 
     private func setupView() {
         setupCameraView()
-        setupOverlay()
         setupSettingsView()
-    }
+        setupHelpView()
 
-    private func setupOverlay() {
-        overlayView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
-        overlayView.layer.cornerRadius = 10
-        overlayView.isUserInteractionEnabled = true
-        overlayView.isHidden = true
         // FIXME: change to black
         view.backgroundColor = .white
-        view.addSubview(overlayView)
-        overlayView.snp.makeConstraints { (make) in
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-2)
-            make.centerX.equalTo(view)
-            make.width.equalTo(self.screenPortraitWidth * 0.6)
-            make.height.equalTo(50)
+    }
+
+    private func setupHelpView() {
+        view.addSubview(helpView)
+        helpView.snp.makeConstraints { (make) in
+            make.left.top.right.equalTo(view)
+            make.bottom.equalTo(settingsView.snp.top)
         }
 
-        overlayView.addSubview(buttonStackView)
-        buttonStackView.snp.makeConstraints { (make) in
-            make.centerY.left.right.equalTo(overlayView)
-            make.height.equalTo(overlayView).multipliedBy(0.7)
-        }
-
-        buttonStackView.addArrangedSubviews([flashImageView, isoView])
+//        helpView.isHidden = true
     }
 }
 
