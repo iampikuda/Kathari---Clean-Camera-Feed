@@ -14,7 +14,7 @@ final class IsoContainer: UIView {
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.alignment = .fill
+        stackView.alignment = .center
         stackView.distribution = .fill
         stackView.spacing = 0
         return stackView
@@ -57,14 +57,16 @@ final class IsoContainer: UIView {
         addSubview(mainView)
         mainView.snp.makeConstraints { (make) in
             make.height.equalTo(self)
-            make.width.equalTo(mainView.snp.height).multipliedBy(1.1)
+            make.width.equalTo(mainView.snp.height).multipliedBy(1.2)
             make.centerX.centerY.equalTo(self)
         }
 
         mainView.addSubview(stackView)
         stackView.snp.makeConstraints { (make) in
-            make.left.top.right.equalTo(mainView)
-            make.bottom.equalTo(mainView).offset(-3)
+            make.top.equalTo(mainView).offset(1)
+            make.left.equalTo(mainView).offset(1)
+            make.right.equalTo(mainView).offset(-1)
+            make.bottom.equalTo(mainView).offset(-1)
         }
 
         mainView.layer.cornerRadius = 3
@@ -72,8 +74,8 @@ final class IsoContainer: UIView {
         mainView.layer.borderColor = UIColor.gold.cgColor
 
         stackView.addArrangedSubviews([isoImageView, bottomLabel])
-        isoImageView.snp.makeConstraints { (make) in
-            make.height.equalTo(stackView).multipliedBy(0.7)
+        bottomLabel.snp.makeConstraints { (make) in
+            make.height.equalTo(mainView).multipliedBy(0.3)
         }
     }
 

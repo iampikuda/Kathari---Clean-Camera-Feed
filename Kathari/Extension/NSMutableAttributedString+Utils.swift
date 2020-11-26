@@ -62,43 +62,4 @@ extension NSMutableAttributedString {
         append(attribStr)
         return self
     }
-
-    /// Creates an attributed string with attributes and ParagraphStyle
-    //
-    /// - warning: The returned string is not localized.
-    /// - warning: ParagraphStyle text alignment supersedes label text alignment!
-    /// - returns: NSMutableAttributedString with color, font, and spacing, and paragraph style
-    @discardableResult
-    func withAttributes(
-        text: String,
-        textColor: UIColor,
-        font: UIFont,
-        letterSpacing: CGFloat = 1.0,
-        underlined: Bool = false,
-        paragraphLineHeightMultiple: CGFloat,
-        paragraphLineSpacing: CGFloat = 0.0,
-        textAlignment: NSTextAlignment = NSTextAlignment.left
-    ) -> NSMutableAttributedString {
-
-        let normal = NSMutableAttributedString(string: text)
-
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = paragraphLineSpacing
-        paragraphStyle.lineHeightMultiple = paragraphLineHeightMultiple
-        paragraphStyle.alignment = textAlignment
-
-        var attributes: [NSAttributedString.Key: Any] =
-            [NSAttributedString.Key.foregroundColor: textColor,
-             NSAttributedString.Key.font: font,
-             NSAttributedString.Key.kern: letterSpacing,
-             NSAttributedString.Key.paragraphStyle: paragraphStyle]
-
-        if underlined {
-            attributes[NSAttributedString.Key.underlineStyle] = NSUnderlineStyle.single.rawValue
-        }
-
-        normal.addAttributes(attributes, range: NSRange(location: 0, length: normal.length))
-
-        return NSMutableAttributedString(string: text, attributes: attributes)
-    }
 }

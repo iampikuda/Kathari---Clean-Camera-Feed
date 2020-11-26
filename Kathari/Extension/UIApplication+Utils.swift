@@ -9,26 +9,6 @@
 import UIKit
 
 extension UIApplication {
-    class func topViewController(
-        vc: UIViewController? = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController
-    ) -> UIViewController? {
-
-        if let navigationController = vc as? UINavigationController {
-            return topViewController(vc: navigationController.visibleViewController)
-        }
-
-        if let tabController = vc as? UITabBarController,
-            let selected = tabController.selectedViewController {
-            return topViewController(vc: selected)
-        }
-
-        if let presented = vc?.presentedViewController {
-            return topViewController(vc: presented)
-        }
-
-        return vc
-    }
-
     class func visibleWindow() -> UIWindow? {
         guard let currentWindow = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else {
             let allWindowsReversed = Array(UIApplication.shared.windows.reversed())

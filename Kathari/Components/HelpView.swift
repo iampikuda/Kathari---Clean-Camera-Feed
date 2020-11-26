@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 
 final class HelpView: UIView {
+    weak var delegate: WindowViewDelegate?
 
     private let mainLabel: UILabel = {
         let label = UILabel()
@@ -18,7 +19,7 @@ final class HelpView: UIView {
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.9
-        label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.font = UIFont.boldSystemFont(ofSize: 22)
         label.text = "Guide"
         return label
     }()
@@ -57,7 +58,7 @@ final class HelpView: UIView {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.alignment = .center
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fill
         stackView.spacing = 11
         return stackView
     }()
@@ -71,24 +72,20 @@ final class HelpView: UIView {
         return imageView
     }()
 
-    let topView = UIView()
-    let bottomView = UIView()
     let contentView = UIView()
     let backgroundView = UIView()
 
-    let arrowDownView = ArrowView()
-
     let double = GestureView(imageName: .doubleTap, title: "Double Tap", subTitle: "Flip Camera")
+    let pinch = GestureView(imageName: .pinch, title: "Pinch In & Out", subTitle: "Digital Zoom")
     let settings = DoubleGestureView(
         imageName: .swipeUp,
         imageName2: .swipeDown,
         title: "Swipe Up & Down",
         subTitle: "Show Settings"
     )
-    let camera = GestureView(imageName: .swipeRight, title: "Swipe Right", subTitle: "Change Camera")
-    let pinch = GestureView(imageName: .pinch, title: "Pinch In & Out", subTitle: "Digital Zoom")
-    let tap = GestureView(imageName: .tap, title: "Tap", subTitle: "Toggle On & Off")
-    let longPress = GestureView(imageName: .longPress, title: "Long Press", subTitle: "Change Level")
+
+    let skewed = SkewedGestureView()
+    let settingsHelpView = SettingsHelpView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -112,18 +109,19 @@ final class HelpView: UIView {
                 make.centerX.equalTo(self)
                 make.centerY.equalTo(self)
                 make.width.lessThanOrEqualTo(self)
-                make.height.lessThanOrEqualTo(self)
+                make.height.equalTo(self).multipliedBy(0.99)
             }
         default:
             contentView.snp.remakeConstraints { (make) in
                 make.centerX.centerY.equalTo(self)
-                make.width.lessThanOrEqualTo(self).multipliedBy(0.94)
+                make.width.equalTo(self).multipliedBy(0.94)
                 make.height.lessThanOrEqualTo(self)
             }
         }
     }
 
     private func setupView() {
+        self.backgroundColor = .red
         contentView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         contentView.layer.cornerRadius = 10
 
@@ -132,10 +130,6 @@ final class HelpView: UIView {
             make.edges.equalTo(self)
         }
 
-//        setupMainStack()
-//        setupTopView()
-//        setupBottomView()
-//        setupMainView()
         setupContentView()
         setupCloseImage()
     }
@@ -151,120 +145,61 @@ final class HelpView: UIView {
             closeImageView,
             airplaneLabel,
             topStackView,
-            bottomStackView,
-            arrowDownView
+            bottomStackView
         ])
 
+        setupLabels()
+        setupImageViews()
+        setupStackViews()
+    }
+
+    private func setupLabels() {
         mainLabel.snp.makeConstraints { (make) in
             make.centerX.equalTo(contentView)
             make.width.equalTo(contentView).multipliedBy(0.3)
-            make.top.equalTo(contentView).offset(5)
+            make.top.equalTo(contentView).offset(8)
             make.height.equalTo(contentView).multipliedBy(0.08)
-        }
-
-        closeImageView.snp.makeConstraints { (make) in
-            make.centerY.equalTo(mainLabel)
-            make.right.equalTo(contentView).offset(-10)
-            make.width.height.equalTo(30)
         }
 
         airplaneLabel.snp.makeConstraints { (make) in
             make.top.equalTo(mainLabel.snp.bottom).offset(5)
             make.centerX.equalTo(contentView)
-            make.width.equalTo(topStackView)
-            make.height.equalTo(16)
+            make.width.lessThanOrEqualTo(topStackView)
+            make.height.equalTo(18)
         }
+    }
 
+    private func setupImageViews() {
+        closeImageView.snp.makeConstraints { (make) in
+            make.centerY.equalTo(mainLabel)
+            make.right.equalTo(contentView).offset(-10)
+            make.width.height.equalTo(28)
+        }
+    }
+
+    private func setupStackViews() {
         topStackView.snp.makeConstraints { (make) in
             make.top.equalTo(airplaneLabel.snp.bottom).offset(5)
             make.centerX.equalTo(contentView)
-            make.width.lessThanOrEqualTo(contentView)
+            make.width.lessThanOrEqualTo(contentView).multipliedBy(0.9)
             make.height.equalTo(topStackView.snp.width).multipliedBy(0.4)
-            make.width.equalTo(contentView).multipliedBy(0.9)
         }
-
-        topStackView.addArrangedSubviews([double, settings, pinch])
 
         bottomStackView.snp.makeConstraints { (make) in
             make.top.equalTo(topStackView.snp.bottom)
             make.centerX.equalTo(contentView)
             make.width.equalTo(topStackView)
             make.height.equalTo(bottomStackView.snp.width).multipliedBy(0.4)
+            make.bottom.lessThanOrEqualTo(contentView).offset(-10)
         }
 
-        bottomStackView.addArrangedSubviews([camera, tap, longPress])
+        topStackView.addArrangedSubviews([double, settings, pinch])
+        bottomStackView.addArrangedSubviews([skewed, settingsHelpView])
 
-        arrowDownView.snp.makeConstraints { (make) in
-            make.top.equalTo(bottomStackView.snp.bottom)
-            make.width.equalTo(contentView).multipliedBy(0.6)
-            make.bottom.equalTo(contentView)
-            make.right.equalTo(bottomStackView)
-            make.height.equalTo(contentView).multipliedBy(0.06)
+        settingsHelpView.snp.makeConstraints { (make) in
+            make.width.equalTo(bottomStackView).multipliedBy(0.656)
         }
     }
-
-//    private func setupTopView() {
-//        topView.addSubview(topStackView)
-//        topStackView.snp.makeConstraints { (make) in
-//            make.centerX.centerY.equalTo(topView)
-//            make.width.height.lessThanOrEqualTo(topView)
-//            make.height.equalTo(topStackView.snp.width).multipliedBy(0.4)
-//        }
-//
-//        topStackView.addArrangedSubviews([double, settings, pinch])
-//    }
-
-//    private func setupBottomView() {
-//        bottomView.addSubviews([bottomStackView, arrowDownView])
-//        bottomStackView.snp.makeConstraints { (make) in
-//            make.centerX.centerY.equalTo(bottomView)
-//            make.height.width.lessThanOrEqualTo(bottomView)
-//            make.width.equalTo(topStackView)
-////            make.width.equalTo(bottomStackView.snp.height).multipliedBy(1.7778)
-//            make.height.equalTo(bottomStackView.snp.width).multipliedBy(0.4)
-//        }
-//
-//        bottomStackView.addArrangedSubviews([camera, tap, longPress])
-//
-//        arrowDownView.snp.makeConstraints { (make) in
-//            make.top.equalTo(bottomStackView.snp.bottom)
-//            make.width.equalTo(bottomStackView).multipliedBy(0.65)
-//            make.bottom.lessThanOrEqualTo(bottomView)
-//            make.right.equalTo(bottomStackView)
-//            make.height.equalTo(20)
-//        }
-//    }
-
-//    private func setupMainView() {
-//        contentView.snp.makeConstraints { (make) in
-//            make.top.equalTo(topStackView).offset(-30)
-//            make.left.equalTo(topStackView).offset(-30)
-//            make.right.equalTo(topStackView).offset(30)
-//            make.bottom.equalTo(arrowDownView)
-//        }
-//
-//        contentView.addSubviews([mainLabel, airplaneLabel])
-//        mainLabel.snp.makeConstraints { (make) in
-//            make.centerX.equalTo(contentView)
-//            make.width.equalTo(contentView).multipliedBy(0.3)
-//            make.top.equalTo(contentView).offset(5)
-//            make.height.equalTo(30)
-//        }
-//
-//        airplaneLabel.snp.makeConstraints { (make) in
-//            make.centerX.equalTo(topView)
-//            make.centerY.equalTo(topView.snp.bottom)
-//            make.width.lessThanOrEqualTo(topView)
-//        }
-//
-//        setAirplaneLabelText()
-//
-//        closeImageView.snp.makeConstraints { (make) in
-//            make.top.equalTo(contentView).offset(10)
-//            make.right.equalTo(contentView).offset(-10)
-//            make.width.height.equalTo(30)
-//        }
-//    }
 
     private func setAirplaneLabelText() {
         let attString = NSMutableAttributedString().withAttributes(
@@ -292,5 +227,6 @@ final class HelpView: UIView {
 
     @objc private func closeView() {
         self.isHidden = true
+        self.delegate?.windowDismissed()
     }
 }

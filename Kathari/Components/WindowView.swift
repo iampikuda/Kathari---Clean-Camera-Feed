@@ -32,6 +32,8 @@ class WindowView: UIView {
         return UIApplication.safeLayoutRect().height
     }
 
+    private(set) var currentOrientation: UIInterfaceOrientation?
+
     private(set) var isShowing = false
 
     override init(frame: CGRect) {
@@ -49,26 +51,20 @@ class WindowView: UIView {
         backgroundView.addGestureRecognizer(tapGesture)
         backgroundColor = UIColor.clear
         clipsToBounds = true
-        setupObservers()
     }
 
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-
-    private func setupObservers() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(transformOrientation),
-            name: UIDevice.orientationDidChangeNotification,
-            object: nil
-        )
-    }
-
-    @objc private func transformOrientation() {
-        if isShowing {
-            show()
+    func transformOrientation(interfaceOrientation: UIInterfaceOrientation) {
+        guard isShowing,
+            currentOrientation != interfaceOrientation,
+            interfaceOrientation != .portraitUpsideDown else {
+                if currentOrientation == nil {
+                    currentOrientation = interfaceOrientation
+                }
+                return
         }
+
+        currentOrientation = interfaceOrientation
+        show()
     }
 
     @objc private func backgroundTapped() {
@@ -111,7 +107,7 @@ class WindowView: UIView {
         self.layoutIfNeeded()
     }
 
-    func hide(in seconds: TimeInterval = 0.2) {
+    func hide() {
         isShowing = false
     }
 }

@@ -7,7 +7,6 @@ use_modular_headers!
 
 target 'Kathari' do
     pod 'SnapKit', '~> 5.0.0'
-    pod 'SwiftyUserDefaults'
     pod 'TactileSlider'
-
+    pod 'Sentry'
 end

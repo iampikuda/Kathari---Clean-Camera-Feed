@@ -10,11 +10,15 @@ import UIKit
 import SnapKit
 import TactileSlider
 
-protocol SliderViewDelegate: class {
+protocol WindowViewDelegate: class {
+    func windowDismissed()
+}
+
+protocol SliderViewDelegate: WindowViewDelegate {
     func slider(_ slider: SliderView, changedTo value: Float)
 }
 
-class SliderView: WindowView {
+final class SliderView: WindowView {
     weak var delegate: SliderViewDelegate?
 
     private let viewArea = UIView()
@@ -54,7 +58,10 @@ class SliderView: WindowView {
             self.anchoredRect = rect
         } else {
             self.anchoredRect = anchorView.convert(anchorView.frame, to: UIApplication.visibleWindow())
-            Helper.logError(KHError(message: "ExposureView may fail... no superview for anchorView"))
+            Helper.logError(
+                KHError(message: "SliderView may fail... no superview for anchorView"),
+                errorMsg: "Having issues placing the slider view in a window view"
+            )
         }
     }
 
@@ -111,10 +118,10 @@ class SliderView: WindowView {
         )
     }
 
-    override func hide(in seconds: TimeInterval = 0.2) {
-        super.hide(in: seconds)
+    override func hide() {
+        super.hide()
         UIView.animate(
-            withDuration: seconds,
+            withDuration: 0.2,
             delay: 0,
             options: .curveEaseOut,
             animations: {
@@ -122,6 +129,7 @@ class SliderView: WindowView {
             },
             completion: { _ in
                 self.removeFromSuperview()
+                self.delegate?.windowDismissed()
             }
         )
     }

@@ -9,27 +9,6 @@
 import UIKit
 
 extension UIColor {
-    static var blackWhite: UIColor {
-        if #available(iOS 13, *) {
-            return UIColor { (trait) -> UIColor in
-                return trait.userInterfaceStyle == .dark ? .white : .black
-            }
-        } else {
-            return .black
-        }
-    }
-
-    static var whiteBlack: UIColor {
-        if #available(iOS 13, *) {
-            return UIColor { (trait) -> UIColor in
-                return trait.userInterfaceStyle == .dark ? .black : .white
-            }
-        } else {
-            return .white
-        }
-    }
-
-    static var primary: UIColor { return UIColor(hex: 0x2D2827) }
     static var gold: UIColor { return UIColor(hex: 0xffd700) }
 }
 
