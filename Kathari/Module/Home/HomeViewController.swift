@@ -17,7 +17,7 @@ final class HomeViewController: KHViewController {
         label.numberOfLines = 1
         label.textColor = .white
         label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 30)
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         label.alpha = 0
         return label
     }()

@@ -121,7 +121,6 @@ final class HelpView: UIView {
     }
 
     private func setupView() {
-        self.backgroundColor = .red
         contentView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         contentView.layer.cornerRadius = 10
 

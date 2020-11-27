@@ -172,6 +172,7 @@ extension HomeViewController {
             nextCam = allCameras[nextIndex]
             self.nextCamIndex = nextIndex
         } else {
+            nextCam = allCameras.first
             self.nextCamIndex = 0
         }
 
